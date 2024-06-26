@@ -1,0 +1,65 @@
+import nltk
+from nltk.chat.util import Chat, reflections
+
+pairs = [
+    [
+        r"Hello",
+        ["Hello , How are you today?"]
+    ],
+    [
+        r"I am good",
+        ["Great! What is your name?"]
+    ],
+    [
+        r"My name is (.*)",
+        ["Hello %1 ! How can i help you today?"],
+    ],
+    [
+        r"what is your name?",
+        ["I am chatbot,what can i do for you?"],
+
+    ],
+    [
+        r"How are you",
+        ["I am doing well, thank you!"],
+
+    ],
+    [
+        r"What's good morning in french?",
+        ["Bonjour!"]
+    ],
+    [
+        r"Do you have parents?",
+        ["Everyone i assist is my family!we are great mates."],
+    ],
+    [
+        r"What can you do for me?",
+        ["I can assist you with any query and can provide the best solution."],
+    ],
+    [
+        r"What will be the weather in Uttar Pradesh today?",
+        ["Today in Uttar Pradesh,the weather is expected to be very cloudy and cold,with temperature reaching around 23 degree celsius during the day and 20 degree celsius at night.Be prepared for possible rain and ensure you have umbrella with you."],
+    ],
+    [
+        r"Okay thankyou chatbot,bye!",
+        ["Bye! Take care and have a great day ahead."],
+    ],
+    ]
+
+chatbot = Chat(pairs, reflections)
+
+
+def chat():
+    print("Hello i am chatbot and i am here to assist you. Type 'bye' to exit.")
+    while True:
+        user_input = input("you : ")
+        if user_input.lower() == 'bye':
+            print("Chatbot : Bye! Take care and have a great day ahead.")
+            break
+        else:
+            response = chatbot.respond(user_input)
+            print("chatbot : ", response)
+
+if _name_ == "_main_":
+    nltk.download("puntk")
+    chat()
